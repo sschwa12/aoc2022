@@ -12,9 +12,7 @@ def max_calories(calorie_count: List[str], n_max: int = 1) -> int:
     joined = ' '.join(calorie_count)
     sums = []
     for s in joined.split('  '):
-        cur_sum = 0
-        for n in s.split(' '):
-            cur_sum += int(n)
+        cur_sum = sum(int(n) for n in s.split(' '))
         heapq.heappush(sums, cur_sum)
 
     return sum(heapq.nlargest(n_max, sums))
