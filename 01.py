@@ -9,9 +9,8 @@ sample = ['1000', '2000', '3000', '', '4000', '', '5000', '6000', '', '7000', '8
 
 
 def max_calories(calorie_count: List[str], n_max: int = 1) -> int:
-    joined = ' '.join(calorie_count)
     sums = []
-    for s in joined.split('  '):
+    for s in ' '.join(calorie_count).split('  '):
         cur_sum = sum(int(n) for n in s.split(' '))
         heapq.heappush(sums, cur_sum)
 
