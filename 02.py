@@ -1,5 +1,3 @@
-from typing import List, Tuple
-
 from utils import read_file
 
 data = read_file('02')
