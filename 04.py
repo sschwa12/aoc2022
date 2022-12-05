@@ -3,18 +3,8 @@ from utils import read_file
 sample_data = ['2-4,6-8', '2-3,4-5', '5-7,7-9', '2-8,3-7', '6-6,4-6', '2-6,4-8']
 
 
-def process_input(d):
-    f = []
-    for s in d:
-        r = []
-        for range in s.split(','):
-            lo, hi = range.split('-')
-            r.append([int(lo), int(hi)])
-        f.append(r)
-    return f
-
-
-data = process_input(read_file('04'))
+def process_input(data):
+    return [[[int(i) for i in s.split('-')] for s in d.split(',')] for d in data]
 
 
 def range_contains_other(r1, r2):
@@ -47,7 +37,9 @@ def num_overlapping_sections_p2(ranges):
     return c
 
 
-p1 = num_overlapping_sections(data)
-p2 = num_overlapping_sections_p2(data)
+sections = process_input(read_file('04'))
+
+p1 = num_overlapping_sections(sections)
+p2 = num_overlapping_sections_p2(sections)
 print(p1)
 print(p2)
